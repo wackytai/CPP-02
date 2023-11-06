@@ -14,11 +14,13 @@ Fixed::Fixed( const Fixed &object )
 Fixed::Fixed( const int number )
 {
     std::cout << "Int constructor called" << std::endl;
+    _value = setRawBits(number);
 }
 
 Fixed::Fixed ( const float number )
 {
     std::cout << "Float constructor called" << std::endl;
+    _value = setRawBits( number );
 }
 
 Fixed::~Fixed()
@@ -31,9 +33,19 @@ int     Fixed::getRawBits( void ) const
     return (_value);
 }
 
+float   Fixed::getRawBits( void ) const
+{
+    return (_value);
+}
+
 void    Fixed::setRawBits( int const raw )
 {
+    _value = raw;
+}
 
+void    Fixed::setRawBits( float const raw )
+{
+    _value = raw;
 }
 
 float   Fixed::toFloat ( void ) const
