@@ -6,15 +6,15 @@ class Fixed
 {
     private:
         int                 _value;
-        static const int    _bits;
+        static const int    _bits = 8;
 
     public:
         Fixed();
         Fixed( const Fixed &object );
         ~Fixed();
-        void    getRawBits( void );
+        int     getRawBits( void ) const;
         void    setRawBits( int const raw );
-}
-
+        Fixed&  operator= ( const Fixed &object );
+};
 
 #endif

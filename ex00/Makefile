@@ -8,7 +8,7 @@ $(NAME):	$(SOURCES)
 		$(CC) $(CFLAGS) $(^) -o $(@) -fsanitize=address,undefined
 
 clean:
-		@rm -f $(wildcard *.o)
+		@rm -f $(wildcard ./src/*.o)
 
 fclean:	clean
 		@rm -f $(NAME)
