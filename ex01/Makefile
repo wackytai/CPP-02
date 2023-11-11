@@ -1,6 +1,6 @@
 NAME = ex01
 SOURCES = $(wildcard ./src/*.cpp)
-CFLAGS = -Wall- Wextra -Werror -std=c++98 -pedantic
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 CC = @c++
 
 all:	$(NAME)

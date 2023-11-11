@@ -14,13 +14,15 @@ Fixed::Fixed( const Fixed &object )
 Fixed::Fixed( const int number )
 {
     std::cout << "Int constructor called" << std::endl;
-    _value = setRawBits(number);
+    _scale = 1 << _bits;
+    setRawBits(toFixed( number ));
 }
 
 Fixed::Fixed ( const float number )
 {
     std::cout << "Float constructor called" << std::endl;
-    _value = setRawBits( number );
+    _scale = 1 << _bits;
+    setRawBits( toFixed( number ) );
 }
 
 Fixed::~Fixed()
@@ -33,29 +35,36 @@ int     Fixed::getRawBits( void ) const
     return (_value);
 }
 
-float   Fixed::getRawBits( void ) const
-{
-    return (_value);
-}
-
 void    Fixed::setRawBits( int const raw )
-{
-    _value = raw;
-}
-
-void    Fixed::setRawBits( float const raw )
 {
     _value = raw;
 }
 
 float   Fixed::toFloat ( void ) const
 {
+    float   f;
 
+    f = roundf(static_cast<float>(_value) / static_cast<float>(_scale));
+    return (f);
 }
 
 int     Fixed::toInt ( void ) const
 {
+    float f;
 
+    f = roundf(static_cast<float>(_value) / _scale);
+    return (static_cast<int>(f));
+}
+
+int     Fixed::toFixed ( int const i )
+{
+    //missing things
+    return (i * _scale);
+}
+
+int     Fixed::toFixed ( float const i )
+{
+    return (static_cast<int>(roundf(i *_scale)));
 }
 
 Fixed&  Fixed::operator= ( const Fixed &object )
@@ -65,7 +74,8 @@ Fixed&  Fixed::operator= ( const Fixed &object )
     return (*this);
 }
 
-void    Fixed::operator<< ( const float number )
+std::ostream&    operator<< (std::ostream& out, const Fixed &object )
 {
-
+    out << object.toFloat();
+    return out;
 }
