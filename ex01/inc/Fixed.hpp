@@ -8,7 +8,7 @@ class Fixed
     private:
         int                 _value;
         float               _scale;
-        static const int    _bits;
+        static const int    _bits = 8;
 
     public:
         Fixed();
