@@ -4,6 +4,7 @@ Fixed::Fixed()
 {
     std::cout << "Default constructor called" << std::endl;
     _scale = 1 << _bits;
+    _value = 0;
 }
 
 Fixed::Fixed( const Fixed &object )

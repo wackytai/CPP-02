@@ -1,7 +1,7 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 # include <iostream>
-#include <cmath>
+# include <cmath>
 
 class Fixed
 {
@@ -35,10 +35,10 @@ class Fixed
         Fixed   operator-- ( void );
         Fixed   operator++ ( int i );
         Fixed   operator-- ( int i );
-        Fixed   min(const Fixed &nb1, const Fixed &nb2);
-        Fixed   max(const Fixed &nb1, const Fixed &nb2);
-        Fixed   min(Fixed &nb1, Fixed &nb2);
-        Fixed   max(Fixed &nb1, Fixed &nb2);
+        static const Fixed&   min(const Fixed &nb1, const Fixed &nb2);
+        static const Fixed&   max(const Fixed &nb1, const Fixed &nb2);
+        static Fixed&   min(Fixed &nb1, Fixed &nb2);
+        static Fixed&   max(Fixed &nb1, Fixed &nb2);
 };
 
 std::ostream    &operator<< ( std::ostream &out, const Fixed &object );
