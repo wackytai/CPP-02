@@ -41,6 +41,24 @@ class Fixed
         static Fixed&   max(Fixed &nb1, Fixed &nb2);
 };
 
+class Point
+{
+    private:
+        const Fixed   _x;
+        const Fixed   _y;
+    
+    public:
+        Point();
+        Point( const Point &object );
+        Point ( const float x, const float y);
+        ~Point();
+        Fixed getX( void ) const;
+        Fixed getY( void ) const;
+        Point& operator= ( const Point &object );
+};
+
 std::ostream    &operator<< ( std::ostream &out, const Fixed &object );
+Fixed           triarea( Point const a, Point const b, Point const c );
+bool            bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
